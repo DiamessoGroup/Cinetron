@@ -1,0 +1,201 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+p,
+a,
+ol,
+ul,
+li {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Lato', sans-serif;
+}
+
+.bodyIndex {
+    background-image: url("../img/dark_knight_background_5b.jpg");
+    background-color: rgb(0, 0, 0);
+    /* background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100%; */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+body,
+html {
+    height: 100%
+}
+
+body {
+    line-height: 2;
+}
+
+.bodyTrailer {
+    background: black;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 6rem;
+    color: white;
+}
+
+#title,
+#searchField {
+    margin-bottom: 45px;
+}
+
+#searchButton,
+#searchField,
+.flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+#searchField {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+#searchField>input,
+#searchField>select {
+    margin: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+form button {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    margin: auto;
+    font-size: 2rem;
+    border: none;
+    padding: 10px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.navbar {
+    border-radius: 0px;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    -webkit-box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: rgb(33, 150, 233);
+}
+
+#mainContent {
+    background: rgba(33, 150, 233, 0.5);
+    color: white;
+}
+
+
+/* #mainContent h2 {
+    font-size: 2.5vmax;
+}
+
+#mainContent p {
+    font-size: 1.2vmax;
+} */
+
+#videoContent {
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#videoContent .fa {
+    font-size: 50px;
+}
+
+#videoContent h2 {
+    color: white;
+}
+
+.arrow {
+    font-size: 200px;
+    color: #D86917;
+}
+
+#navigation {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#contentDetail .fa {
+    font-size: 20px;
+    color: #D86917;
+}
+
+#footerTrailer {
+    background: white;
+}
+
+#footerTrailer a {
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+}
+
+#footerTrailerContent p {
+    margin-bottom: 5px;
+    border-bottom-width: 0px;
+    border-bottom-style: solid;
+    border-top-width: 0px;
+    border-top-style: solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 5px;
+    font-weight: bold;
+    color: black;
+}
+
+#footerTrailerContent {
+    border-left: 0.1px dotted black;
+}
+
+#footerTrailerContent span {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    #searchField {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+    #searchField>input,
+    #searchField>select {
+        width: 400px;
+    }
+}
