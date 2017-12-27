@@ -189,6 +189,10 @@ form button {
     font-size: 14px;
 }
 
+.movieSmallDetails {
+    font-weight: bold;
+}
+
 @media (min-width: 768px) {
     #searchField {
         -ms-flex-wrap: nowrap;

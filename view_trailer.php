@@ -10,7 +10,7 @@
     <!-- <?php include "navigation.php" ?> -->
     <br>
     <div class="container-fluid flex" id="videoContent">
-        <a href="#"><i class="fa fa-chevron-circle-left arrow"></i></a>
+        <a href="#" ng-click="previousMovie()"><i class="fa fa-chevron-circle-left arrow"></i></a>
         <div>
             <iframe width="1100" height="618.75" ng-src="{{youtubeLinkFull}}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
             <!-- <h2>Black Panther</h2>
@@ -29,7 +29,7 @@
                 <a href="#" class="w3-left w3-bar-item"><img src="./logo/Logo_Cinetron_1.png" style="width: 25px"></a>
             </div>
             <div class="w3-col s8 m10" id="footerTrailerContent">
-                <p>{{trailerDetailTitle}} <span class="w3-hide-small w3-right"><small>Run Time: {{trailerDetailRuntime}} min</small> - <small>Release Year: {{trailerDetailReleaseYear}}</small></span></p>
+                <p>{{trailerDetailTitle}} <span class="w3-hide-small w3-right"><small>Run Time: <span class="movieSmallDetails">{{trailerDetailRuntime}} min</span></small> - <small>Release Year: <span class="movieSmallDetails">{{trailerDetailReleaseYear}}</span></small></span></p>
             </div>
             <div class="w3-col s2 m1">
                 <div class="w3-right">
