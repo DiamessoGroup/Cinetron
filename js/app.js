@@ -1,5 +1,5 @@
 var app = angular.module('myApp', []);
-app.controller('myCtrl', function ($scope, $http, $sce) {
+app.controller('myCtrl', function ($scope, $http, $sce, $location, $window) {
 
   function getRandomIntInclusive(min, max) {
     /* Get Random Number between min and max */
@@ -7,8 +7,6 @@ app.controller('myCtrl', function ($scope, $http, $sce) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-
-  let randomPage = getRandomIntInclusive(1, 5);
 
   /* Get Movie Detail */
   function getMovieDetail(trailerKey) {
@@ -41,8 +39,8 @@ app.controller('myCtrl', function ($scope, $http, $sce) {
       url: `https://api.themoviedb.org/3/discover/movie?api_key=a862696eab5e9103df57baedbe9d56a9&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=${randomPage}&vote_count.gte=10&vote_average.gte=7&with_genres=28`
     }).then(function mySuccess(response) {
       $scope.discoverMovie = response.data;
-      console.log($scope.discoverMovie);
-      console.log($scope.discoverMovie.results[0].id);
+      /* console.log($scope.discoverMovie);
+      console.log($scope.discoverMovie.results[0].id); */
       var i = 0;
       trailerKey = $scope.discoverMovie.results[i].id;
       getMovieDetail(trailerKey);
@@ -51,6 +49,14 @@ app.controller('myCtrl', function ($scope, $http, $sce) {
     }); /* Get Movie List End */
   }
 
+
+  function getRandomPage() {
+    firstPageMovieList = 1;
+    lastPageMovieList = 5;
+    return getRandomIntInclusive(firstPageMovieList, lastPageMovieList);
+  }
+
+  let randomPage = getRandomPage();
   /* function getNextPage() {
     randomPage = getRandomIntInclusive(1, 5);
     i = getRandomIntInclusive(0, $scope.discoverMovie.results.length - 1);
@@ -59,44 +65,52 @@ app.controller('myCtrl', function ($scope, $http, $sce) {
   } */
 
   /* Get Movie List */
-  $http({
-    method: "GET",
-    url: `https://api.themoviedb.org/3/discover/movie?api_key=a862696eab5e9103df57baedbe9d56a9&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=${randomPage}&vote_count.gte=10&vote_average.gte=7&with_genres=28`
-  }).then(function mySuccess(response) {
-    $scope.discoverMovie = response.data;
-    /* console.log($scope.discoverMovie);
-    console.log($scope.discoverMovie.results[0].id); */
-    var i = getRandomIntInclusive(1, $scope.discoverMovie.results.length - 1);
-    trailerKey = $scope.discoverMovie.results[i].id;
-    getMovieDetail(trailerKey);
-
-    $scope.nextMovie = function () {
-      /* Get Movie to Next Movie Function */
-      i = i + 1;
-      if (i == $scope.discoverMovie.results.length) {
-        randomPage = getRandomIntInclusive(1, 5);
-        i = getRandomIntInclusive(1, $scope.discoverMovie.results.length - 1);
-        getMovieList(randomPage);
-      }
+  $scope.getMovieCategory = function (a) {
+    $window.location.href = './view_trailer.php';
+    console.log($location.url('view_trailer.php'));
+    console.log($location.path());
+    $http({
+      method: "GET",
+      url: `https://api.themoviedb.org/3/discover/movie?api_key=a862696eab5e9103df57baedbe9d56a9&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=${randomPage}&vote_count.gte=10&vote_average.gte=7&with_genres=${a}`
+    }).then(function mySuccess(response) {
+      $scope.discoverMovie = response.data;
+      console.log($scope.discoverMovie);
+      console.log($scope.discoverMovie.results[0].id);
+      var i = getRandomIntInclusive(1, $scope.discoverMovie.results.length - 1);
       trailerKey = $scope.discoverMovie.results[i].id;
       getMovieDetail(trailerKey);
-    };
 
-    $scope.previousMovie = function () {
-      /* Get Movie to Next Movie Function */
-      i = i - 1;
-      if (i < 0) {
-        randomPage = getRandomIntInclusive(1, 5);
-        i = getRandomIntInclusive(0, $scope.discoverMovie.results.length - 1);
-        getMovieList(randomPage);
-      }
-      trailerKey = $scope.discoverMovie.results[i].id;
-      getMovieDetail(trailerKey);
-    };
-  }, function myError(response) {
-    $scope.discoverMovie = response.statusText;
-  });
-  /* Movie List End */
+      $scope.nextMovie = function () {
+        /* Get Movie to Next Movie Function */
+        i = i + 1;
+        if (i == $scope.discoverMovie.results.length) {
+          randomPage = getRandomPage();
+          i = getRandomIntInclusive(0, $scope.discoverMovie.results.length - 1);
+          getMovieList(randomPage);
+        }
+        trailerKey = $scope.discoverMovie.results[i].id;
+        getMovieDetail(trailerKey);
+      };
+
+      $scope.previousMovie = function () {
+        /* Get Movie to Previous Movie Function */
+        i = i - 1;
+        if (i < 0) {
+          randomPage = getRandomPage();
+          i = getRandomIntInclusive(0, $scope.discoverMovie.results.length - 1);
+          getMovieList(randomPage);
+        }
+        trailerKey = $scope.discoverMovie.results[i].id;
+        getMovieDetail(trailerKey);
+      };
+
+    }, function myError(response) {
+      $scope.discoverMovie = response.statusText;
+    });
+    /* Movie List End */
+  }
+
+
 });
 
 /*{

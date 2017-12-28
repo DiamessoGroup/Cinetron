@@ -31,6 +31,86 @@
         </div>
     </form>
 
+    <div class="w3-container black">
+        <div class="w3-row">
+            <div class="w3-col s12 m6 l4">
+                <a href ng-click="getMovieCategory(28)"><div class="w3-card-4 card">
+                    <img src="./img/genres/Action.jpg" alt="Avatar" class="image">
+                    <div class="overlay">
+                        <div class="text">Action</div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="w3-col s12 m6 l4">
+                <a href="#"><div class="w3-card-4 card">
+                    <img src="./img/genres/Adventure.jpg" alt="Avatar" class="image">
+                    <div class="overlay">
+                        <div class="text">Adventure</div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="w3-col s12 m6 l4">
+                <a href="#"><div class="w3-card-4 card">
+                    <img src="./img/genres/Comedy.jpg" alt="Avatar" class="image">
+                    <div class="overlay">
+                        <div class="text">Comedy</div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="w3-col s12 m6 l4">
+                <a href="#"><div class="w3-card-4 card">
+                    <img src="./img/genres/Drama.jpg" alt="Avatar" class="image">
+                    <div class="overlay">
+                        <div class="text">Drama</div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="w3-col s12 m6 l4">
+                <a href="#"><div class="w3-card-4 card">
+                    <img src="./img/genres/Music.jpg" alt="Avatar" class="image">
+                    <div class="overlay">
+                        <div class="text">Music</div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="w3-col s12 m6 l4">
+                <a href="#"><div class="w3-card-4 card">
+                    <img src="./img/genres/Horror.jpg" alt="Avatar" class="image">
+                    <div class="overlay">
+                        <div class="text">Horror</div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="w3-col s12 m6 l4">
+                <a href="#"><div class="w3-card-4 card">
+                    <img src="./img/genres/Romance.jpg" alt="Avatar" class="image">
+                    <div class="overlay">
+                        <div class="text">Romance</div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="w3-col s12 m6 l4">
+                <a href="#"><div class="w3-card-4 card">
+                    <img src="./img/genres/Scifi.jpg" alt="Avatar" class="image">
+                    <div class="overlay">
+                        <div class="text">Science Fiction</div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="w3-col s12 m6 l4">
+                <a href="#"><div class="w3-card-4 card">
+                    <img src="./img/genres/Family.jpg" alt="Avatar" class="image">
+                    <div class="overlay">
+                        <div class="text">Family</div>
+                    </div>
+                </div></a>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+
     <div class="w3-container">
         <div class="w3-panel w3-card-4 w3-padding" id="mainContent">
             <h2>CINETRON</h2>
