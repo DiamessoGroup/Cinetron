@@ -11,7 +11,7 @@
     <div class="container-fluid text-center" id="title">
         <h1 class="w3-center">CINETRON</h1>
     </div>
-    <form action="" method="post" class="container-fluid w3-center">
+    <!-- <form action="" method="post" class="container-fluid w3-center">
 
         <div id="searchField" class="form-inline">
             <select name="genre" class="form-control input-lg">
@@ -19,22 +19,31 @@
                 <option value="2018">Action</option>
                 <option value="2017">Comedy</option>
                 <option value="2016">Drama</option>
-            </select>
+            </select> -->
 
             <!-- <input type="text" placeholder="Genre" class="form-control input-lg"> -->
 
             <!-- <input type="text" placeholder="Keyword" class="form-control input-lg"> -->
-        </div>
+        <!-- </div>
 
         <div id="searchButton">
             <button type="submit" class="">Search</button>
         </div>
-    </form>
+    </form> -->
+
+    <div class="w3-container">
+        <div class="w3-panel w3-card-4 w3-padding" id="mainContent">
+            <h2>CINETRON</h2>
+            <p>Cinetron helps you find random movies you could watch tonight.</p>
+            <p>Select a category below, and you will be able to preview trailers of top rated movies.</p>
+            <p>Start discovering new movies or reminiscing on old ones.</p>
+        </div>
+    </div>
 
     <div class="w3-container black">
         <div class="w3-row">
             <div class="w3-col s12 m6 l4">
-                <a href ng-click="getMovieCategory(28)"><div class="w3-card-4 card">
+                <a ng-href="view_trailer.php" ng-click="getMovieCategory(28)"><div class="w3-card-4 card">
                     <img src="./img/genres/Action.jpg" alt="Avatar" class="image">
                     <div class="overlay">
                         <div class="text">Action</div>
@@ -42,7 +51,7 @@
                 </div></a>
             </div>
             <div class="w3-col s12 m6 l4">
-                <a href="#"><div class="w3-card-4 card">
+                <a href ng-click="getMovieCategory(12)"><div class="w3-card-4 card">
                     <img src="./img/genres/Adventure.jpg" alt="Avatar" class="image">
                     <div class="overlay">
                         <div class="text">Adventure</div>
@@ -50,7 +59,7 @@
                 </div></a>
             </div>
             <div class="w3-col s12 m6 l4">
-                <a href="#"><div class="w3-card-4 card">
+                <a href ng-click="getMovieCategory(35)"><div class="w3-card-4 card">
                     <img src="./img/genres/Comedy.jpg" alt="Avatar" class="image">
                     <div class="overlay">
                         <div class="text">Comedy</div>
@@ -58,7 +67,7 @@
                 </div></a>
             </div>
             <div class="w3-col s12 m6 l4">
-                <a href="#"><div class="w3-card-4 card">
+                <a href ng-click="getMovieCategory(18)"><div class="w3-card-4 card">
                     <img src="./img/genres/Drama.jpg" alt="Avatar" class="image">
                     <div class="overlay">
                         <div class="text">Drama</div>
@@ -66,7 +75,7 @@
                 </div></a>
             </div>
             <div class="w3-col s12 m6 l4">
-                <a href="#"><div class="w3-card-4 card">
+                <a href ng-click="getMovieCategory(10402)"><div class="w3-card-4 card">
                     <img src="./img/genres/Music.jpg" alt="Avatar" class="image">
                     <div class="overlay">
                         <div class="text">Music</div>
@@ -74,7 +83,7 @@
                 </div></a>
             </div>
             <div class="w3-col s12 m6 l4">
-                <a href="#"><div class="w3-card-4 card">
+                <a href ng-click="getMovieCategory(27)"><div class="w3-card-4 card">
                     <img src="./img/genres/Horror.jpg" alt="Avatar" class="image">
                     <div class="overlay">
                         <div class="text">Horror</div>
@@ -82,7 +91,7 @@
                 </div></a>
             </div>
             <div class="w3-col s12 m6 l4">
-                <a href="#"><div class="w3-card-4 card">
+                <a href ng-click="getMovieCategory(10749)"><div class="w3-card-4 card">
                     <img src="./img/genres/Romance.jpg" alt="Avatar" class="image">
                     <div class="overlay">
                         <div class="text">Romance</div>
@@ -90,7 +99,7 @@
                 </div></a>
             </div>
             <div class="w3-col s12 m6 l4">
-                <a href="#"><div class="w3-card-4 card">
+                <a href ng-click="getMovieCategory(878)"><div class="w3-card-4 card">
                     <img src="./img/genres/Scifi.jpg" alt="Avatar" class="image">
                     <div class="overlay">
                         <div class="text">Science Fiction</div>
@@ -98,7 +107,7 @@
                 </div></a>
             </div>
             <div class="w3-col s12 m6 l4">
-                <a href="#"><div class="w3-card-4 card">
+                <a href ng-click="getMovieCategory(10751)"><div class="w3-card-4 card">
                     <img src="./img/genres/Family.jpg" alt="Avatar" class="image">
                     <div class="overlay">
                         <div class="text">Family</div>
@@ -110,16 +119,6 @@
         
     </div>
     
-
-    <div class="w3-container">
-        <div class="w3-panel w3-card-4 w3-padding" id="mainContent">
-            <h2>CINETRON</h2>
-            <p>Cinetron helps you find random movies you could watch tonight.</p>
-            <p>Select a year, a genre or enter a keyword.</p>
-            <p>Press search and you will be able to preview trailers of top rated movies.</p>
-            <p>Start discovering new movies or reminiscing on old ones.</p>
-        </div>
-    </div>
     <?php include "./meta_footer.php" ?>
 </body>
 
