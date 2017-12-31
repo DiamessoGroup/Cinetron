@@ -13,8 +13,13 @@ function getRandomPage() {
 
 let randomPage = getRandomPage();
 
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ["ngRoute"]);
 app.controller('myCtrl', function ($scope, $rootScope, $http, $sce, $location, $window, PopulatePage) {
+
+  $scope.location = $location.path();
+  $rootScope.$on('$routeChangeSuccess', function () {
+    $scope.location = $location.path();
+  });
 
   /* Get Movie Detail */
   function getMovieDetail(trailerKey) {
@@ -30,7 +35,7 @@ app.controller('myCtrl', function ($scope, $rootScope, $http, $sce, $location, $
       for (i = 0; i < $scope.trailerDetail.videos.results.length; i += 1) {
         if ($scope.trailerDetail.videos.results[i].type == 'Trailer' && $scope.trailerDetail.videos.results[i].site == 'YouTube') {
           $scope.youtubeLinkPartial = `https://www.youtube.com/watch?v=${$scope.trailerDetail.videos.results[i].key}`;
-          $scope.youtubeLinkFull = $sce.trustAsResourceUrl(`https://www.youtube.com/embed/${$scope.trailerDetail.videos.results[i].key}?rel=0&amp;controls=0&amp;hd=1&amp;iv_load_policy=3&amp;showinfo=0`);
+          $scope.youtubeLinkFull = $sce.trustAsResourceUrl(`https://www.youtube.com/embed/${$scope.trailerDetail.videos.results[i].key}?rel=0&amp;controls=0&amp;hd=1&amp;iv_load_policy=3&amp;showinfo=0&amp;autoplay=1`);
           break;
         }
       }
@@ -59,46 +64,45 @@ app.controller('myCtrl', function ($scope, $rootScope, $http, $sce, $location, $
 
 
   /* Get Movie Category */
-  $rootScope.getMovieCategory = function(a) {
-  
+  $rootScope.getMovieCategory = function (a) {
+
     PopulatePage.getCategory(a).then(function mySuccess(response) {
-    $scope.discoverMovie = response.data;
-    console.log($scope.discoverMovie);
-    console.log($scope.discoverMovie.results[0].id);
-    var i = getRandomIntInclusive(1, $scope.discoverMovie.results.length - 1);
-    trailerKey = $scope.discoverMovie.results[i].id;
-    getMovieDetail(trailerKey);
-
-    $scope.nextMovie = function () {
-      /* Get Movie to Next Movie Function */
-      i = i + 1;
-      if (i == $scope.discoverMovie.results.length) {
-        randomPage = getRandomPage();
-        i = getRandomIntInclusive(0, $scope.discoverMovie.results.length - 1);
-        getMovieList(randomPage);
-      }
+      $scope.discoverMovie = response.data;
+      /* console.log($scope.discoverMovie);
+      console.log($scope.discoverMovie.results[0].id); */
+      var i = getRandomIntInclusive(1, $scope.discoverMovie.results.length - 1);
       trailerKey = $scope.discoverMovie.results[i].id;
       getMovieDetail(trailerKey);
-    };
 
-    $scope.previousMovie = function () {
-      /* Get Movie to Previous Movie Function */
-      i = i - 1;
-      if (i < 0) {
-        randomPage = getRandomPage();
-        i = getRandomIntInclusive(0, $scope.discoverMovie.results.length - 1);
-        getMovieList(randomPage);
-      }
-      trailerKey = $scope.discoverMovie.results[i].id;
-      getMovieDetail(trailerKey);
-    };
+      $scope.nextMovie = function () {
+        /* Get Movie to Next Movie Function */
+        i = i + 1;
+        if (i == $scope.discoverMovie.results.length) {
+          randomPage = getRandomPage();
+          i = getRandomIntInclusive(0, $scope.discoverMovie.results.length - 1);
+          getMovieList(randomPage);
+        }
+        trailerKey = $scope.discoverMovie.results[i].id;
+        getMovieDetail(trailerKey);
+      };
 
-  }, function myError(response) {
-    $scope.discoverMovie = response.statusText;
-  });
-   } 
+      $scope.previousMovie = function () {
+        /* Get Movie to Previous Movie Function */
+        i = i - 1;
+        if (i < 0) {
+          randomPage = getRandomPage();
+          i = getRandomIntInclusive(0, $scope.discoverMovie.results.length - 1);
+          getMovieList(randomPage);
+        }
+        trailerKey = $scope.discoverMovie.results[i].id;
+        getMovieDetail(trailerKey);
+      };
+
+    }, function myError(response) {
+      $scope.discoverMovie = response.statusText;
+    });
+  }
   /* Get Movie Category End */
-
 
 });
 
@@ -111,6 +115,20 @@ app.factory('PopulatePage', function ($http) {
       })
     }
   }
+});
+
+app.config(function ($routeProvider) {
+  $routeProvider
+    .when("/", {
+      templateUrl: "template/index-template.php"
+    })
+    .when("/trailer", {
+      templateUrl: "template/trailer-template.php"
+    })
+    .otherwise({
+      templateUrl: "template/index-template.php"
+    });
+
 });
 
 /*{

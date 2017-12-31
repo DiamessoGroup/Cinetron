@@ -195,7 +195,7 @@ form button {
 
 .card {
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     -webkit-transition: 0.3s;
     transition: 0.3s;
     padding: 30px 10px;
@@ -204,7 +204,7 @@ form button {
 
 .card:hover {
     -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .text {
@@ -213,7 +213,7 @@ form button {
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
 }
 
@@ -229,13 +229,12 @@ form button {
     -webkit-transition: .5s ease;
     transition: .5s ease;
     background-color: rgba(0, 0, 0, 0);
-    color: rgba(0,0,0,0);
-    
+    color: rgba(0, 0, 0, 0);
 }
 
 .card:hover .overlay {
     background-color: rgba(0, 0, 0, 0.5);
-    color: rgba(255,255,255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
     opacity: 1;
 }
 
@@ -247,13 +246,20 @@ form button {
     filter: grayscale(70%);
 }
 
-
 .black {
     background: rgba(0, 0, 0, 0.95);
     margin-top: 35px;
     margin-bottom: 35px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+#tmdb {
+    background: black;
+    margin-top: 15px;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 @media (min-width: 768px) {
