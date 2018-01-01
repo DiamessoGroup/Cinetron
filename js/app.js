@@ -1,8 +1,8 @@
 function getRandomIntInclusive(min, max) {
   /* Get Random Number between min and max */
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  var min = Math.ceil(min);
+  var max = Math.floor(max);
+  return (Math.floor(Math.random() * (max - min + 1)) + min);
 }
 
 function getRandomPage() {
@@ -33,10 +33,9 @@ app.controller('myCtrl', function ($scope, $rootScope, $http, $sce, $location, $
       $scope.trailerDetailRuntime = $scope.trailerDetail.runtime;
       $scope.trailerDetailReleaseYear = $scope.trailerDetail.release_date.substr(0, 4);
       for (i = 0; i < $scope.trailerDetail.videos.results.length; i += 1) {
-        if ($scope.trailerDetail.videos.results[i].type == 'Trailer' && $scope.trailerDetail.videos.results[i].site == 'YouTube') {
-          $scope.youtubeLinkPartial = `https://www.youtube.com/watch?v=${$scope.trailerDetail.videos.results[i].key}`;
-          $scope.youtubeLinkFull = $sce.trustAsResourceUrl(`https://www.youtube.com/embed/${$scope.trailerDetail.videos.results[i].key}?rel=0&amp;controls=0&amp;hd=1&amp;iv_load_policy=3&amp;showinfo=0&amp;autoplay=1`);
-          break;
+        if (($scope.trailerDetail.videos.results[i].type == 'Trailer') && ($scope.trailerDetail.videos.results[i].site == 'YouTube')) {
+          $scope.youtubeLinkPartial = "https://www.youtube.com/watch?v=" + $scope.trailerDetail.videos.results[i].key;
+          $scope.youtubeLinkFull = $sce.trustAsResourceUrl("https://www.youtube.com/embed/" + $scope.trailerDetail.videos.results[i].key + "?rel=0&amp;controls=0&amp;hd=1&amp;iv_load_policy=3&amp;showinfo=0&amp;autoplay=1");
         }
       }
     }, function myError(response) {

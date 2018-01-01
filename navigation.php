@@ -13,11 +13,6 @@
                 <li>
                     <a href="./view_trailer.php">Contact Us</a>
                 </li>
-                <li>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-user"> </span> Log In
-                    </a>
-                </li>
             </ul>
         </div>
     </div>

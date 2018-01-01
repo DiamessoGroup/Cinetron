@@ -1,0 +1,12 @@
+{
+    "name": "krishnadiamesso/cinetron",
+    "description": "Trailer App",
+    "type": "Project",
+    "authors": [
+        {
+            "name": "Krishna Diamesso",
+            "email": "krishnadiamesso@gmail.com"
+        }
+    ],
+    "require": {}
+}
