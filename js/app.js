@@ -25,7 +25,7 @@ app.controller('myCtrl', function ($scope, $rootScope, $http, $sce, $location, $
   function getMovieDetail(trailerKey) {
     $http({
       method: "GET",
-      url: `https://api.themoviedb.org/3/movie/${trailerKey}?api_key=a862696eab5e9103df57baedbe9d56a9&append_to_response=videos`
+      url: "https://api.themoviedb.org/3/movie/" + trailerKey + "?api_key=a862696eab5e9103df57baedbe9d56a9&append_to_response=videos"
     }).then(function mySuccess(response) {
       $scope.trailerDetail = response.data;
       /* console.log($scope.trailerDetail); */

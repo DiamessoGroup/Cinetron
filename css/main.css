@@ -225,17 +225,20 @@ form button {
     right: 0;
     height: 100%;
     width: 100%;
-    opacity: 0;
     -webkit-transition: .5s ease;
     transition: .5s ease;
-    background-color: rgba(0, 0, 0, 0);
-    color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 1;
 }
 
 .card:hover .overlay {
     background-color: rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255, 0.5);
     opacity: 1;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+    opacity: 0;
 }
 
 .image {
