@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="./view_trailer.php">Contact Us</a>
+                    <a href="./contact-us.php">Contact Us</a>
                 </li>
             </ul>
         </div>

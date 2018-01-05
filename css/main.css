@@ -104,6 +104,7 @@ form button {
 
 .navbar-inverse .navbar-nav>li>a {
     color: white;
+    transition: 0.5s;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover {
@@ -263,6 +264,19 @@ form button {
     color: white;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+.contactUs {
+    background: black;
+    margin-top: 30px;
+    padding: 30px;
+}
+
+#contactUs {
+    width: 50%;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media (min-width: 768px) {

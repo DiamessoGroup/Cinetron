@@ -36,6 +36,7 @@ app.controller('myCtrl', function ($scope, $rootScope, $http, $sce, $location, $
         if (($scope.trailerDetail.videos.results[i].type == 'Trailer') && ($scope.trailerDetail.videos.results[i].site == 'YouTube')) {
           $scope.youtubeLinkPartial = "https://www.youtube.com/watch?v=" + $scope.trailerDetail.videos.results[i].key;
           $scope.youtubeLinkFull = $sce.trustAsResourceUrl("https://www.youtube.com/embed/" + $scope.trailerDetail.videos.results[i].key + "?rel=0&amp;controls=0&amp;hd=1&amp;iv_load_policy=3&amp;showinfo=0&amp;autoplay=1");
+          return;
         }
       }
     }, function myError(response) {
@@ -48,7 +49,7 @@ app.controller('myCtrl', function ($scope, $rootScope, $http, $sce, $location, $
     /* Get Movie List Function */
     $http({
       method: "GET",
-      url: `https://api.themoviedb.org/3/discover/movie?api_key=a862696eab5e9103df57baedbe9d56a9&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=${randomPage}&vote_count.gte=10&vote_average.gte=7&with_genres=28`
+      url: "https://api.themoviedb.org/3/discover/movie?api_key=a862696eab5e9103df57baedbe9d56a9&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=" + randomPage + "&vote_count.gte=10&vote_average.gte=7&with_genres=28"
     }).then(function mySuccess(response) {
       $scope.discoverMovie = response.data;
       /* console.log($scope.discoverMovie);
@@ -110,7 +111,7 @@ app.factory('PopulatePage', function ($http) {
     getCategory: function (a) {
       return $http({
         method: "GET",
-        url: `https://api.themoviedb.org/3/discover/movie?api_key=a862696eab5e9103df57baedbe9d56a9&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=${randomPage}&vote_count.gte=10&vote_average.gte=7&with_genres=${a}`
+        url: "https://api.themoviedb.org/3/discover/movie?api_key=a862696eab5e9103df57baedbe9d56a9&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=" + randomPage + "&vote_count.gte=10&vote_average.gte=7&with_genres=" + a
       })
     }
   }

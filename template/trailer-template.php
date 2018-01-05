@@ -2,7 +2,7 @@
     <br>
     <div class="container-fluid flex" id="videoContent">
         <a href ng-click="previousMovie()"><i class="fa fa-chevron-circle-left arrow"></i></a>
-        <div>
+        <div class="videoWrapper">
             <iframe width="1100" height="618.75" ng-src="{{youtubeLinkFull}}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
             <!-- <h2>Black Panther</h2>
             <div id="contentDetail">
