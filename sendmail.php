@@ -39,7 +39,7 @@ try {
     $mail->isHTML(true); // Set email format to HTML
     $mail->Subject = $_POST["subject"];
     $mail->Body = $emailText;
-    $mail->AltBody = $emailText;
+    $mail->AltBody = strip_tags($emailText);
 
     $mail->send();
     echo 'Your message has been sent successfully. Thank you, we will get back to you soon!';

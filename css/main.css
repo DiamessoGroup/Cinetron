@@ -279,6 +279,8 @@ form button {
     margin-right: auto;
 }
 
+#statusSendMail {}
+
 @media (min-width: 768px) {
     #searchField {
         -ms-flex-wrap: nowrap;
@@ -287,5 +289,14 @@ form button {
     #searchField>input,
     #searchField>select {
         width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    #contactUs {
+        width: 80%;
+    }
+    #contactUs h1 {
+        font-size: 3rem;
     }
 }
