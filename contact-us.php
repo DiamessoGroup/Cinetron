@@ -6,7 +6,42 @@ use PHPMailer\PHPMailer\PHPMailer;
 //Load composer's autoloader
 require 'vendor/autoload.php';
 
+$name = $email = $subject = $message = "";
+
+function validate_data($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (empty($_POST["name"])) {
+        $nameErr = "Your name is required.";
+    } else {
+        $name = validate_data($_POST["name"]);
+    }
+
+    if (empty($_POST["email"])) {
+        $emailErr = "The email is required.";
+    } else {
+        $email = validate_data($_POST["email"]);
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    }
+
+    if (empty($_POST["subject"])) {
+        $subjectErr = "The subject is required.";
+    } else {
+        $subject = validate_data($_POST["subject"]);
+    }
+
+    if (empty($_POST["message"])) {
+        $messageErr = "The message is required.";
+    } else {
+        $message = validate_data($_POST["message"]);
+    }
 
     $mail = new PHPMailer(true); // Passing `true` enables exceptions
     //Server settings
@@ -29,15 +64,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Recipients
     $mail->setFrom('info@cinetron.com', 'Cinetron');
     $mail->addAddress('johomb@gmail.com', 'Jo'); // Add a recipient
-    $mail->addReplyTo($_POST["email"], $_POST["name"]);
+    $mail->addReplyTo($email, $name);
 
     //Content
     $emailText = "<b>You have a new message from your Cinetron form.</b><br><br>";
-    $emailText .= "<b>Name:</b> $_POST[name]<br><br>";
-    $emailText .= "<b>Message:</b> $_POST[message]<br>";
+    $emailText .= "<b>Name:</b> $name<br><br>";
+    $emailText .= "<b>Message:</b> $message<br>";
 
     $mail->isHTML(true); // Set email format to HTML
-    $mail->Subject = $_POST["subject"];
+    $mail->Subject = $subject;
     $mail->Body = $emailText;
     $mail->AltBody = strip_tags($emailText);
 
@@ -69,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h1>Contact Us</h1>
                 </div>
                 <div class="w3-container w3-padding-32 ">
-                    <form name="form" method="post" action="" novalidate>
+                    <form name="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" novalidate>
                         <p>
                             <label>Name*</label>
                             <br>
@@ -77,6 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </p>
                         <span ng-show="form.name.$dirty" class="w3-text-red">
                             <span ng-show="form.name.$error.required">Your name is required</span>
+                            <span><?php echo $nameErr; ?></span>
                         </span>
                         <p>
                             <label>Email*</label>
@@ -86,6 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span ng-show="form.email.$dirty && form.email.$invalid" class="w3-text-red">
                             <span ng-show="form.email.$error.required">The email is required</span>
                             <span ng-show="form.email.$error.email">The email is invalid</span>
+                            <span><?php echo $emailErr; ?></span>
                         </span>
                         <p>
                             <label>Subject*</label>
@@ -93,6 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input class="w3-input w3-hover-border-blue" name="subject" ng-model="subject" type="text" required>
                             <span ng-show="form.subject.$dirty" class="w3-text-red">
                                 <span ng-show="form.subject.$error.required">The subject is required</span>
+                                <span><?php echo $subjectErr; ?></span>
                             </span>
                         </p>
                         <p>
@@ -101,6 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <textarea class="w3-input w3-hover-border-blue" rows="3" cols="50" name="message" ng-model="message" type="text" required></textarea>
                             <span ng-show="form.message.$dirty" class="w3-text-red">
                                 <span ng-show="form.message.$error.required">The message is required</span>
+                                <span><?php echo $messageErr; ?></span>
                             </span>
                         </p>
                         <p>
