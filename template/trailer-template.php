@@ -24,7 +24,7 @@
             </div>
             <div class="w3-col s2 m1">
                 <div class="w3-right">
-                    <a href="index.php" class="w3-bar-item w3-button"><i class="fa fa-search"></i></a>
+                    <a href="index.php" class="w3-bar-item w3-button w3-red w3-hover-red"><i class="fa fa-search"></i></a>
                 </div>
             </div>
         </div>
