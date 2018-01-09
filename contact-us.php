@@ -18,6 +18,21 @@ function validate_data($data)
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // A session is required
+    if (!session_id()) {
+        @session_start();
+    }
+
+    // Instantiate the class
+    $msg = new \Plasticbrain\FlashMessages\FlashMessages();
+
+    $msg->setCloseBtn('<button type="button" class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;
+                    </button>');
+    $msg->setMsgCssClass('alert');
+
     if (empty($_POST["name"])) {
         $nameErr = "Your name is required.";
     } else {
@@ -76,6 +91,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->Body = $emailText;
     $mail->AltBody = strip_tags($emailText);
 
+    if (!$mail->send()) {
+        // Error message
+        $msg->error('There was an error while submitting the form. Please try again later.');
+        $msg->display();
+
+    } else {
+        // Success message
+        $msg->success('Your message has been sent successfully. Thank you, we will get back to you soon!');
+        $msg->display();
+    }
+
 }
 ?>
 
@@ -89,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <body class="w3-light-grey" ng-app="" ng-cloak>
             <div class=" w3-card-4 w3-white" id="contactUs">
                 <div id="statusSendMail" class="w3-margin w3-center">
-                <p><?php
+                    <!-- <p> <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$mail->send()) {
         echo 'There was an error while submitting the form. Please try again later.';
@@ -98,13 +124,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-                    </p>
-                    </div>
+                    </p> -->
+                </div>
                 <div class="w3-container w3-blue w3-padding-16 w3-center">
                     <h1>Contact Us</h1>
                 </div>
                 <div class="w3-container w3-padding-32 ">
-                    <form name="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" novalidate>
+                    <form name="form" method="post" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" novalidate>
                         <p>
                             <label>Name*</label>
                             <br>
@@ -112,7 +138,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </p>
                         <span ng-show="form.name.$dirty" class="w3-text-red">
                             <span ng-show="form.name.$error.required">Your name is required</span>
-                            <span><?php echo $nameErr; ?></span>
+                            <span>
+                                <?php echo $nameErr; ?>
+                            </span>
                         </span>
                         <p>
                             <label>Email*</label>
@@ -122,7 +150,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span ng-show="form.email.$dirty && form.email.$invalid" class="w3-text-red">
                             <span ng-show="form.email.$error.required">The email is required</span>
                             <span ng-show="form.email.$error.email">The email is invalid</span>
-                            <span><?php echo $emailErr; ?></span>
+                            <span>
+                                <?php echo $emailErr; ?>
+                            </span>
                         </span>
                         <p>
                             <label>Subject*</label>
@@ -130,7 +160,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input class="w3-input w3-hover-border-blue" name="subject" ng-model="subject" type="text" required>
                             <span ng-show="form.subject.$dirty" class="w3-text-red">
                                 <span ng-show="form.subject.$error.required">The subject is required</span>
-                                <span><?php echo $subjectErr; ?></span>
+                                <span>
+                                    <?php echo $subjectErr; ?>
+                                </span>
                             </span>
                         </p>
                         <p>
@@ -139,7 +171,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <textarea class="w3-input w3-hover-border-blue" rows="3" cols="50" name="message" ng-model="message" type="text" required></textarea>
                             <span ng-show="form.message.$dirty" class="w3-text-red">
                                 <span ng-show="form.message.$error.required">The message is required</span>
-                                <span><?php echo $messageErr; ?></span>
+                                <span>
+                                    <?php echo $messageErr; ?>
+                                </span>
                             </span>
                         </p>
                         <p>
@@ -156,5 +190,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
         </body>
+
+        <script>
+            $(function () {
+                $(".close").on('click', function () {
+                    $('.alert').hide();
+                });
+            });
+        </script>
 
     </html>
