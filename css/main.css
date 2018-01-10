@@ -279,7 +279,11 @@ form button {
     margin-right: auto;
 }
 
-#statusSendMail {}
+.alert {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
 @media (min-width: 768px) {
     #searchField {
