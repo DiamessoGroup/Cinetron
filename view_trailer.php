@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-    <?php include "./meta_head.php" ?>
+    <?php include "./meta_head.php"?>
     <title>Cinetron - View Trailer</title>
 </head>
 
 <body class="bodyTrailer" ng-app="myApp" ng-controller="myCtrl" ng-cloak>
-    <!-- <?php include "navigation.php" ?> -->
+    <!-- <?php include "navigation.php"?> -->
     <br>
     <div class="container-fluid flex" id="videoContent">
         <a href="#" ng-click="previousMovie()"><i class="fa fa-chevron-circle-left arrow"></i></a>
-        <div>
-            <iframe width="1100" height="618.75" ng-src="{{youtubeLinkFull}}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+        <div class="intrinsic-container intrinsic-container-4x3">
+            <iframe ng-src="{{youtubeLinkFull}}" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
             <!-- <h2>Black Panther</h2>
             <div id="contentDetail">
                 <i class="fa fa-heart"></i>
@@ -38,7 +38,7 @@
             </div>
         </div>
     </footer>
-    <?php include "./meta_footer.php" ?>
+    <?php include "./meta_footer.php"?>
 </body>
 
 </html>
