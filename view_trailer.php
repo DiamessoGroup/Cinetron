@@ -13,6 +13,7 @@
         <a href="#" ng-click="previousMovie()"><i class="fa fa-chevron-circle-left arrow"></i></a>
         <div class="intrinsic-container intrinsic-container-4x3">
             <iframe ng-src="{{youtubeLinkFull}}" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://youtu.be/YQHsXMglC9A" allowfullscreen></iframe>
             <!-- <h2>Black Panther</h2>
             <div id="contentDetail">
                 <i class="fa fa-heart"></i>
@@ -21,6 +22,9 @@
             </div> -->
         </div>
         <a href="#" ng-click="nextMovie()"><i class="fa fa-chevron-circle-right arrow"></i></a>
+        <div class="intrinsic-container intrinsic-container-4x3">
+            <iframe src="https://youtu.be/YQHsXMglC9A" allowfullscreen></iframe>
+        </div>
     </div>
     <footer>
         <div class="w3-bar w3-bottom" id="footerTrailer">

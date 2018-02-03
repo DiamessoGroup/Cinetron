@@ -158,6 +158,7 @@ form button {
 
 #footerTrailer {
     background: white;
+    line-height: 2.5;
 }
 
 #footerTrailer a {
@@ -173,7 +174,6 @@ form button {
     border-top-width: 0px;
     border-top-style: solid;
     padding-top: 5px;
-    padding-bottom: 5px;
     margin-top: 5px;
     padding-left: 5px;
     font-weight: bold;
@@ -286,30 +286,57 @@ form button {
 
 /* *** */
 
-.intrinsic-container {
+.embed-responsive {
     position: relative;
-    height: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
     overflow: hidden;
 }
 
-/* 16x9 Aspect Ratio */
-
-.intrinsic-container-16x9 {
-    padding-bottom: 56.25%;
+.embed-responsive::before {
+    display: block;
+    content: "";
 }
 
-/* 4x3 Aspect Ratio */
-
-.intrinsic-container-4x3 {
-    padding-bottom: 75%;
-}
-
-.intrinsic-container iframe {
+.embed-responsive .embed-responsive-item,
+.embed-responsive iframe,
+.embed-responsive embed,
+.embed-responsive object,
+.embed-responsive video {
     position: absolute;
     top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    border: 0;
+}
+
+.embed-responsive-21by9::before {
+    padding-top: 42.857143%;
+}
+
+.embed-responsive-16by9::before {
+    /* padding-top: 56.25%; */
+    padding-top: 53%;
+}
+
+.embed-responsive-4by3::before {
+    padding-top: 75%;
+}
+
+.embed-responsive-1by1::before {
+    padding-top: 100%;
+}
+
+.fa-chevron-circle-right {
+    padding-left: 15px;
+}
+
+.fa-chevron-circle-left {
+    padding-right: 15px;
 }
 
 @media (min-width: 768px) {
